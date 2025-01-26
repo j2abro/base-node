@@ -1,16 +1,10 @@
+
 #OP Stack Base Node
 Some notes on installing a Base node with geth on a GCP for testing, with minimal instance requirements and basic configuration. For testing only.
-
-
-
-
-
-```
 
 <!-- Beacon RPC
 https://eth-beacon-chain.drpc.org/rest/
 curl -X GET "https://eth-beacon-chain.drpc.org/rest/eth/v1/beacon/genesis" -H "accept: application/json" -->
-
 
 ## GCP Ubuntu Configuration
 ### GCP Instance
