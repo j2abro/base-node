@@ -52,8 +52,9 @@ The env file in the repo is edited around this, but as a backup try this:
     `sudo usermod -aG docker $USER`
 OR
     `sudo docker compose up`
-### Output of `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
-###  - shows that it is conneected to 2 peers.
+
+**Output** `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
+  - shows that it is conneected to 2 peers.
 
 ### then test 
 ```curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
