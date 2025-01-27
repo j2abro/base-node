@@ -7,16 +7,18 @@ https://eth-beacon-chain.drpc.org/rest/
 curl -X GET "https://eth-beacon-chain.drpc.org/rest/eth/v1/beacon/genesis" -H "accept: application/json" -->
 
 ## GCP Ubuntu Configuration
-## GCP Instance
-1. Create instace: E2 (8cpu/16gbRam/4000GB regular storage)
+### GCP Instance
+1. Create instace: E2 (8 CPU / 16 GB RAM /4000GB regular storage)
 2. Log into instance
 
-# Get Node
+## Clone Node
 Update: `sudo apt-get update`
 `mkdir base && cd $!`
-`git clone https://github.com/base-org/node`
+`git clone https://github.com/j2abro/base-node'
+(Original: `git clone https://github.com/base-org/node`)
 
 ## Install Docker
+
 ### Certificates
 <!-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # deprecated, but ok for now -->
 `sudo apt-get install ca-certificates curl gnupg`
@@ -31,7 +33,7 @@ Update: `sudo apt-get update`
 `chmod +x ~/.docker/cli-plugins/docker-compose`
 `sudo usermod -aG docker <USERNAME>` # if you get docker permission issues. may need to logout/in to take effect
 
-##3 Run docker compose
+### Run docker compose
 ### this should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac)
 The env file in the repo is edited around this, but as a backup try this:
 `export CLIENT=geth`
