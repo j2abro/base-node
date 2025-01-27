@@ -24,12 +24,19 @@ Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.a
 
 ## Install Docker
 
-### Certificates
+### Docker GPG Key
 <!-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # deprecated, but ok for now -->
 `sudo apt-get install ca-certificates curl gnupg`
 `sudo install -m 0755 -d /etc/apt/keyrings`
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`
 `sudo chmod a+r /etc/apt/keyrings/docker.gpg`
+
+### Install Docker
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
 
 ### Install Docker Commpose
 `mkdir -p ~/.docker/cli-plugins/`
