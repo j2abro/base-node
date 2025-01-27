@@ -1,5 +1,5 @@
 
-#OP Stack Base Node
+# OP Stack Base Node
 Some notes on installing a Base node with geth on a GCP for testing, with minimal instance requirements and basic configuration. For testing only.
 
 <!-- Beacon RPC
@@ -7,48 +7,49 @@ https://eth-beacon-chain.drpc.org/rest/
 curl -X GET "https://eth-beacon-chain.drpc.org/rest/eth/v1/beacon/genesis" -H "accept: application/json" -->
 
 ## GCP Ubuntu Configuration
-### GCP Instance
-Create instace: E2 (8cpu/16gbRam/4000GB regular storage)
-Log in via browser SSH from console
+## GCP Instance
+1. Create instace: E2 (8cpu/16gbRam/4000GB regular storage)
+2. Log into instance
 
-sudo apt-get update
+# Get Node
+Update: `sudo apt-get update`
+`mkdir base && cd $!`
+`git clone https://github.com/base-org/node`
 
-# Install Node
-mkdir base && cd $!
-git clone https://github.com/base-org/node
+## Install Docker
+### Certificates
+<!-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # deprecated, but ok for now -->
+`sudo apt-get install ca-certificates curl gnupg`
+`sudo install -m 0755 -d /etc/apt/keyrings`
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg`
+`sudo chmod a+r /etc/apt/keyrings/docker.gpg`
 
-# Install Docker
-## Certificates
-## curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # deprecated, but ok for now
-OR
-sudo apt-get install ca-certificates curl gnupg
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+### Install Docker Commpose
+`mkdir -p ~/.docker/cli-plugins/`
+`cd ~/.docker/cli-plugins/`
+`curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose`
+`chmod +x ~/.docker/cli-plugins/docker-compose`
+`sudo usermod -aG docker <USERNAME>` # if you get docker permission issues. may need to logout/in to take effect
 
-## Install Commpose
-mkdir -p ~/.docker/cli-plugins/
-cd ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-chmod +x ~/.docker/cli-plugins/docker-compose
-sudo usermod -aG docker j2abro # if you get docker permission issues. may need to logout/in to take effect
-
-## Run docker compose
+##3 Run docker compose
 ### this should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac)
-export CLIENT=geth 
-export HOST_DATA_DIR=./geth-data
+The env file in the repo is edited around this, but as a backup try this:
+`export CLIENT=geth`
+`export HOST_DATA_DIR=./geth-data`
 
 ### Run in foreground to test 
-docker compose up
+`docker compose up`
 ### Output of `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
 ###  - shows that it is conneected to 2 peers.
 
-### then test `curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
-  -H "Content-Type: application/json" http://localhost:8545`
+### then test 
+```curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
+  -H "Content-Type: application/json" http://localhost:8545```
 
 ## Run in background
-docker compose up -d 
-### test again, with Curl
+If it runs fine, you can ctrl-c the run in background
+`docker compose up -d` 
+Test again, with Curl
 
 
 
