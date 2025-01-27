@@ -13,9 +13,14 @@ curl -X GET "https://eth-beacon-chain.drpc.org/rest/eth/v1/beacon/genesis" -H "a
 
 ## Clone Node
 Update: `sudo apt-get update`
-`mkdir base && cd $!`
-`git clone https://github.com/j2abro/base-node'
+
+`mkdir base && cd base`
+
+`git clone https://github.com/j2abro/base-node`
+
 (Original: `git clone https://github.com/base-org/node`)
+
+Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.alchemy.com/v2/<API_KEY>`
 
 ## Install Docker
 
@@ -52,7 +57,6 @@ The env file in the repo is edited around this, but as a backup try this:
 If it runs fine, you can ctrl-c the run in background
 `docker compose up -d` 
 Test again, with Curl
-
 
 
 # Reference
