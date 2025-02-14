@@ -78,13 +78,13 @@ Original Source:
  - Install guide: https://docs.base.org/tutorials/run-a-base-node/
 
  Log into Alchemy to retrieve my L1 RPC API:
-    `https://shape-mainnet.g.alchemy.com/v2/LZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
+    `https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
 
 Some test queries
 
-    `curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://shape-mainnet.g.alchemy.com/v2/LZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
+    `curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
 
     ```
     curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
-    -H "Content-Type: application/json" https://shape-mainnet.g.alchemy.com/v2/LZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
+    -H "Content-Type: application/json" https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
      ```
