@@ -32,26 +32,27 @@ Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.a
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 ### Install Docker
-    `sudo apt install docker.io`
+    sudo apt install docker.io
 
 ### Install Docker Commpose
-    `mkdir -p ~/.docker/cli-plugins/`
-    `cd ~/.docker/cli-plugins/`
-    `curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose`
-    `chmod +x ~/.docker/cli-plugins/docker-compose`
-    ---MAYBE `sudo groupadd docker`
-    `sudo usermod -aG docker <USERNAME>` # if you get docker permission issues. may need to logout/in to take effect
+    mkdir -p ~/.docker/cli-plugins/
+    cd ~/.docker/cli-plugins/`
+    curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose`
+    chmod +x ~/.docker/cli-plugins/docker-compose`
+Optional: if you get permissions isssue. May need to logout/in to take effect.
+    sudo groupadd docker
+    sudo usermod -aG docker <USERNAME> 
 
 ### Run docker compose
-### this should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac)
+This should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac)
 The env file in the repo is edited around this, but as a backup try this:
-    `export CLIENT=geth`
-    `export HOST_DATA_DIR=./geth-data`
+    export CLIENT=geth
+    export HOST_DATA_DIR=./geth-data
 
 ### Run in foreground to test 
-    `sudo usermod -aG docker $USER`
+    sudo usermod -aG docker $USER
 OR
-    `sudo docker compose up`
+    sudo docker compose up
 
 **Output** `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
   - shows that it is conneected to 2 peers.
@@ -68,7 +69,7 @@ OR
 
 ## Run in background
 If it runs fine, you can ctrl-c the run in background
-`docker compose up -d` 
+    docker compose up -d
 Test again, with Curl
 
 
@@ -78,11 +79,11 @@ Original Source:
  - Install guide: https://docs.base.org/tutorials/run-a-base-node/
 
  Log into Alchemy to retrieve my L1 RPC API:
-    `https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
+    https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
 
 Some test queries
 
-    `curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y`
+    curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
 
     ```
     curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
