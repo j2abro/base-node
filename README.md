@@ -42,17 +42,17 @@ Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.a
 
 #### Optional: if you get permissions isssue. May need to logout/in to take effect.
     sudo groupadd docker
-    sudo usermod -aG docker <USERNAME> 
+    sudo usermod -aG docker $USER
 
-### Run docker compose
-This should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac)
+#### Optional: Manually set env variables
+This should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac).
 The env file in the repo is edited around this, but as a backup try this:
+```
     export CLIENT=geth
     export HOST_DATA_DIR=./geth-data
+```
 
 ### Run in foreground to test 
-    sudo usermod -aG docker $USER
-OR
     sudo docker compose up
 
 **Output** `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
@@ -61,13 +61,7 @@ OR
 ### then test 
 ```
     curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
-  -H "Content-Type: application/json" http://localhost:8545
-```
-
-### another test
-```markdown
-  curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
-  -H "Content-Type: application/json" http://localhost:8545
+    -H "Content-Type: application/json" http://localhost:8545
 ```
 
 ## Run in background
