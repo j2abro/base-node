@@ -52,11 +52,13 @@ The env file in the repo is edited around this, but as a backup try this:
     export HOST_DATA_DIR=./geth-data
 ```
 
-### Run in foreground to test 
+### Run in foreground to test
+```
     sudo docker compose up
-
-**Output** `node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0`
-  - shows that it is conneected to 2 peers.
+**Output**
+node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0
+```
+shows that it is conneected to 2 peers.
 
 ### then test 
 ```
@@ -66,7 +68,9 @@ The env file in the repo is edited around this, but as a backup try this:
 
 ## Run in background
 If it runs fine, you can ctrl-c the run in background
+```
     docker compose up -d
+```
 Test again, with Curl
 
 
