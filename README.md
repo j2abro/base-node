@@ -61,13 +61,14 @@ OR
 ### then test 
 ```
     curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
-  -H "Content-Type: application/json" http://localhost:8545```
+  -H "Content-Type: application/json" http://localhost:8545
+```
 
 ### another test
-  ```markdown
+```markdown
   curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
   -H "Content-Type: application/json" http://localhost:8545
-  ```
+```
 
 ## Run in background
 If it runs fine, you can ctrl-c the run in background
