@@ -40,7 +40,7 @@ Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.a
     curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
     chmod +x ~/.docker/cli-plugins/docker-compose
 
-Optional: if you get permissions isssue. May need to logout/in to take effect.
+#### Optional: if you get permissions isssue. May need to logout/in to take effect.
     sudo groupadd docker
     sudo usermod -aG docker <USERNAME> 
 
