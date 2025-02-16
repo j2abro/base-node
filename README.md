@@ -27,32 +27,32 @@ Edit API Key in .env.mainnet file: `OP_NODE_L1_ETH_RPC=https://shape-mainnet.g.a
 ### Docker GPG Key
 <!-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # deprecated, but ok for now -->
 ```
-    sudo apt-get install ca-certificates curl gnupg
-    sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 ### Install Docker
     sudo apt install docker.io
 
 ### Install Docker Compose
 ```
-    mkdir -p ~/.docker/cli-plugins/
-    cd ~/.docker/cli-plugins/
-    curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-    chmod +x ~/.docker/cli-plugins/docker-compose
+mkdir -p ~/.docker/cli-plugins/
+cd ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
 ```
 #### Optional: if you get permissions isssue. May need to logout/in to take effect.
 ```
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
 #### Optional: Manually set env variables
 This should be in .env file, but there seems to be an interpretation issue on ubuntu (works on mac).
 The env file in the repo is edited around this, but as a backup try this:
 ```
-    export CLIENT=geth
-    export HOST_DATA_DIR=./geth-data
+export CLIENT=geth
+export HOST_DATA_DIR=./geth-data
 ```
 
 ### Run in foreground to test
