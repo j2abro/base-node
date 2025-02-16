@@ -55,10 +55,11 @@ The env file in the repo is edited around this, but as a backup try this:
 ### Run in foreground to test
 ```
     sudo docker compose up
-**Output**
-node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0
+
+    **Output**
+    node-execution-1  | INFO [01-26|20:34:19.048] Looking for peers     peercount=2 tried=180 static=0
 ```
-shows that it is conneected to 2 peers.
+This shows that we are connected to 2 peers.
 
 ### then test 
 ```
@@ -83,10 +84,10 @@ Original Source:
     https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
 
 Some test queries
-
+```
     curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
 
-    ```
+  
     curl -d '{"id":0,"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["latest",false]}' \
     -H "Content-Type: application/json" https://shape-mainnet.g.alchemy.com/v2/BCDLZ02nM4sVS2Bl8D9xkQvzRydKfF4pX0y
-     ```
+```
